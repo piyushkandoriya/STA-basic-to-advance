@@ -196,4 +196,31 @@ Here, in this circuit, "IN","OUT" and "CLK" are ports and flops are sequencial l
 
 In this circuits, there are four paths available. in which path 1 is, port to port path. path 2 is, port to sequential element path. similarly other 2 paths also.
 	
-## <h1 id="header-1_3">Timing pat elements</h1>
+## <h1 id="header-1_3">Timing path elements</h1>
+Now, let's understand the components of timing path. The components are:
+<ul>
+		<li><a>Startpoint</a></li>
+	</ul>
+Start point is where data is launched by clock or where data must be available at specific time. Mostly the input ports or register clock pins are start point.
+	
+<img width="318" alt="image" src="https://user-images.githubusercontent.com/123488595/219954246-3689c8ec-c1d5-46c9-8d8d-5904d422a542.png">
+
+	
+In this circuit, for Path 1, start point is "IN" port. for path 2 also, start point is "IN" port. In path 3, start point is clock pin. similarly, for the path 4 also, start point is clock pin.
+<ul>
+		<li><a>Endpoint</a></li>
+	</ul>
+Endpoints are where data is captured by clock edge or where the data must be available ar a specific time. Usually output port or register data pins are endpoints.
+	
+<img width="307" alt="image" src="https://user-images.githubusercontent.com/123488595/219954306-d37cd016-f386-453c-a4b4-8eb1f284fc65.png">
+
+Here, for path 2, the endpoint is the data pin of flop and for path 1, the endpoint is the "OUT" pin.
+<ul>
+		<li><a>Combinational logic</a></li>
+	</ul>
+Combinational logic is an elements that have no memory or internal state. for example, in above circuit is logic a is like given below,
+<img width="269" alt="image" src="https://user-images.githubusercontent.com/123488595/219954588-83470332-076e-4135-b7e2-c2b81210fdf1.png">
+
+But the point for the notice is that in combinational logic also, that can be more than one paths may be available.
+	
+## <h1 id="header-1_4">Setup and Hold checks </h1>
