@@ -62,7 +62,7 @@
         <li><a href="#header-3_1">Multiple Clocks </a></li>
       </ul>
       <ul>
-        <li><a href="#header-3_2"Timing arcs and clocks</a></li>
+        <li><a href="#header-3_2">Timing arcs and clocks</a></li>
       </ul>
 	<ul>
         <li><a href="#header-3_3">Setup and Hold Details</a></li>
@@ -118,7 +118,7 @@
       </ul>
 </div>
 
-	<div class="toc">
+<div class="toc">
   <ul>
     <li><a href="#header-6">References</a></li>
   </ul>
