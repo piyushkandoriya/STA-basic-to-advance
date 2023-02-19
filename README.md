@@ -170,12 +170,30 @@ STA works only for the synchonous designs only. it does not verify asynchronous 
 <ul>
 		<li><a>Netlist</a></li>
 	</ul>
-contais the design information
+contais the design information.
 <ul>
 		<li><a>SDC or Constrain file</a></li>
 	</ul>
-It comtains all information about what you want the time
+It comtains all information about what you want the time.
 <ul>
 		<li><a>Logic Libraries</a></li>
 	</ul>
 It contains all the information about delays of logic cells and tansition time of those cells.
+
+## <h1 id="header-1_2"> Timing Paths</h1>
+STA breaks the paths at
+<ul>
+		<li><a>Ports</a></li>
+	</ul>
+
+<ul>
+		<li><a>Sequencial elements</a></li>
+	</ul>
+	
+<img width="317" alt="image" src="https://user-images.githubusercontent.com/123488595/219953189-9426e854-43c6-449e-85f6-55026da4ae11.png">
+
+Here, in this circuit, "IN","OUT" and "CLK" are ports and flops are sequencial logics.
+
+In this circuits, there are four paths available. in which path 1 is, port to port path. path 2 is, port to sequential element path. similarly other 2 paths also.
+	
+## <h1 id="header-1_3">Timing pat elements</h1>
