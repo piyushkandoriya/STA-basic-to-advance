@@ -130,5 +130,52 @@
   </ul>
 </div>
 
-# <h1 id="header-1">section 1- Lactures and labs </h1>	 
+# <h1 id="header-1">Section 1- Lactures and labs </h1>	 
 ## <h1 id="header-1_1"> STA defination</h1>
+The full form of STA is static timing analysis.
+	
+STA is a method of verifying timing performance of a design. we can do the same analysis using other methods like,
+	<ul>
+		<li><a>simulation</a></li>
+	</ul>
+	<ul>
+		<li><a>SPICE simulation</a></li>
+	</ul>
+but now a days it is not exist.
+	
+Now, let us see the features of STA.
+### STA features
+<ul>
+		<li><a>Static</a></li>
+	</ul>	
+It is static in nature. it does not run dynamically. it does not run on the test benches. Because of the static nature, STA is fast and has a larg capacity. It collapse whole design into minimal cycle and analyze once.
+	
+<ul>
+		<li><a>Exhaustive</a></li>
+	</ul>
+it is exhaustive. it's use mathematical techhniques instead of input vectors.so, it's required riming checks are performed on all possible paths and scenarios.
+<ul>
+		<li><a>Functionality</a></li>
+	</ul>	
+It does not verify the logic functionality of design. for that we need to equivalance checking on that side.
+<ul>
+		<li><a>Conservative</a></li>
+	</ul>
+it is conservative in nature and be pasimastic in many cases to ensure there is enough gaurd band for the design timing requirment.
+	
+	
+STA works only for the synchonous designs only. it does not verify asynchronous part of the design.
+	
+### Inputs to STA
+<ul>
+		<li><a>Netlist</a></li>
+	</ul>
+contais the design information
+<ul>
+		<li><a>SDC or Constrain file</a></li>
+	</ul>
+It comtains all information about what you want the time
+<ul>
+		<li><a>Logic Libraries</a></li>
+	</ul>
+It contains all the information about delays of logic cells and tansition time of those cells.
