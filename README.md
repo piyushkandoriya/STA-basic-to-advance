@@ -224,3 +224,122 @@ Combinational logic is an elements that have no memory or internal state. for ex
 But the point for the notice is that in combinational logic also, that can be more than one paths may be available.
 	
 ## <h1 id="header-1_4">Setup and Hold checks </h1>
+### Setup check
+Setup check means the data should be available at the input of sequencial decvice , sometime before clock edge that capture the data. This enforces max delay on the data path.
+	
+Setup  time of a flop is dependent on the technology node and value is available in the logic libraries. let's understand this by using some waveform,
+<img width="233" alt="image" src="https://user-images.githubusercontent.com/123488595/219955311-d1cb6711-8911-4909-beaf-42abe1e6b47f.png">
+ 	
+### Hold check
+Hold check means, data should at the input of sequential device for sometime after the clock edge that captures the data. This enforce min delay on the data path. let's understand this by using some waveform,
+<img width="230" alt="image" src="https://user-images.githubusercontent.com/123488595/219955569-ada60bf2-c92d-440c-9077-2420c59e7053.png">
+
+## <h1 id="header-1_5">Slack Calculation </h1>
+Setup Slack = (Data required time) - (Data arrival time)
+<ul>
+		<li><a>Data arrival time</a></li>
+	</ul>
+It is time taken by the signal to travel from startpoint to endpoint.
+<img width="265" alt="image" src="https://user-images.githubusercontent.com/123488595/219955805-9e568e76-ca56-46d6-96ca-baf8e142e47c.png">
+
+One endpoint have multiple arrival times with respect to start point.
+<img width="253" alt="image" src="https://user-images.githubusercontent.com/123488595/219955885-b3b12679-b996-49cf-8a1e-ee684027821f.png">
+<ul>
+		<li><a>Data required time</a></li>
+	</ul>
+It is the time before what the signal should be arrived.
+<img width="252" alt="image" src="https://user-images.githubusercontent.com/123488595/219955986-a853c890-7776-4315-83c2-2a38f69fec6d.png">
+
+<ul>
+		<li><a>Slack</a></li>
+	</ul>
+Slack is the difference between the required time and arrival time. If slack is positive then data arrives earlier then requied time. 
+<img width="278" alt="image" src="https://user-images.githubusercontent.com/123488595/219956169-c3b17b79-aa30-4839-ad15-0bdb506f59d5.png">
+
+If slack is nagative then data arrives latter then required time. so we have to fix this problem.
+<img width="271" alt="image" src="https://user-images.githubusercontent.com/123488595/219956271-dbe0fa4a-9974-431f-b631-3fd5456dc56b.png">
+
+## <h1 id="header-1_6"> SDC overview</h1>
+SDC comands are set of comands which are provided to the STA tools as a input to do timing analysis. The first set of comands are constrains fot timing. these specify the parameters affecting the frequency of the design. examples of these comands are,
+<ul>
+		<li><a>creat_clock</a></li>
+	</ul>
+<ul>
+		<li><a>creat_generated_clock</a></li>
+	</ul>
+<ul>
+		<li><a>set_clock_groups</a></li>
+	</ul>
+<ul>
+		<li><a>set_clock_transition</a></li>
+	</ul>
+<ul>
+		<li><a>set_timing_derate</a></li>
+	</ul>
+	
+The constrains for defining the area and power specify restriction about the area and power. for example,
+<ul>
+		<li><a>set_max_area</a></li>
+	</ul>
+<ul>
+		<li><a>set_max_dynamic_power</a></li>
+	</ul>
+
+Constrains for design rules is requirements for the target technology. for example,
+<ul>
+		<li><a>set_max_capacitance</a></li>
+	</ul>
+<ul>
+		<li><a>set_min_capacitance</a></li>
+	</ul>
+<ul>
+		<li><a>set_max_transition</a></li>
+	</ul>
+<ul>
+		<li><a>set_max_fanout</a></li>
+	</ul>
+Constraines for interfaces are assumptions on the design boundary. for example,
+<ul>
+		<li><a>set_driving_cell</a></li>
+	</ul>
+<ul>
+		<li><a>set_input_delay</a></li>
+	</ul>
+<ul>
+		<li><a>set_output_delay</a></li>
+	</ul>
+<ul>
+		<li><a>set_load</a></li>
+	</ul>
+
+Constraines for specific modes and configuration are assumptions on the value allowed. for example,
+<ul>
+		<li><a>set_case_analysis</a></li>
+	</ul>
+<ul>
+		<li><a>set_logic_dc</a></li>
+	</ul>
+<ul>
+		<li><a>set_logic_one</a></li>
+	</ul>
+<ul>
+		<li><a>set_lpgic_zero</a></li>
+	</ul>
+some exceptional to design constrain. these are relax the requirement set by other commands or default STA tool analysis. for example,
+<ul>
+		<li><a>set_false_path</a></li>
+	</ul>
+<ul>
+		<li><a>set_multiple_path</a></li>
+	</ul>
+<ul>
+		<li><a>set_max_delay</a></li>
+	</ul>
+<ul>
+		<li><a>set_min_delay</a></li>
+	</ul>
+<ul>
+		<li><a>set_disable_timing</a></li>
+	</ul>
+
+## <h1 id="header-1_7"> clocks</h1>
