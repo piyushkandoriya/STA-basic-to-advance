@@ -361,3 +361,23 @@ We can have one more option to use two clocks C1 and C2 of two different time pe
 <img width="249" alt="image" src="https://user-images.githubusercontent.com/123488595/220034337-1445f20f-9da9-4171-bc1c-13e7b75456e1.png">
 
 ## <h1 id="header-1_8"> Generated Clocks</h1>
+Generated clocks are the clocks which are define inside the design. Tipically devided version of parent clock or multiple version of parent clock. The command for that is "create_generated_clock_(devide or multiplied by number)-(source from where this clock is created)-(name of the parant clock)". for example,
+
+<img width="212" alt="image" src="https://user-images.githubusercontent.com/123488595/220056562-5363368d-baf5-4f65-a39d-37e1bfbdf721.png">
+
+
+<img width="223" alt="image" src="https://user-images.githubusercontent.com/123488595/220056301-609b8529-e46d-4816-a198-137115312059.png">
+
+Instead of devide and multiple, we can give command as per rise and fall time of parant clock waveform. for example,
+	
+<img width="209" alt="image" src="https://user-images.githubusercontent.com/123488595/220056904-50d9319a-42ad-42d6-89ea-d68443f9ef50.png">
+
+In additional to edge, we can add edge shift. when we use edge shift, we have to use edge with it. for example,
+	
+<img width="236" alt="image" src="https://user-images.githubusercontent.com/123488595/220057628-10ba117b-2984-4f48-b2bf-10a005803975.png">
+
+Generated clock have multiple paths from master clock to the generated clock. But the worst path is sequential path even when we do setup and max and min delay for do timing analysis. The right path for timing analysis is combinational path.
+	
+<img width="224" alt="image" src="https://user-images.githubusercontent.com/123488595/220059941-37a03266-45f1-41aa-8c93-4dc12ea2831c.png">
+
+## <h1 id="header-1_9">Boundary Constraints</h1>
