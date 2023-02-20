@@ -408,4 +408,4 @@ On the output side also, we have to know the specific value of the load.this can
 
 Now we have both commands like, "set_input_transition" and "set_clock_transition". so, if CTS is not run the we have to use "set_clock_transition" command. and if CTS is  run then we just need to give "set_input_transition" command, and tool will automatically calculate other values and use it.
 	
-## <h1 id="header-1_10">DAY_1 labs</h1>
+## <h1 id="header-1_10">DAY-1 labs</h1>
