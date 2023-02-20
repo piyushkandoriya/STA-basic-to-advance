@@ -323,7 +323,7 @@ Constraines for specific modes and configuration are assumptions on the value al
 		<li><a>set_logic_one</a></li>
 	</ul>
 <ul>
-		<li><a>set_lpgic_zero</a></li>
+		<li><a>set_logic_zero</a></li>
 	</ul>
 some exceptional to design constrain. these are relax the requirement set by other commands or default STA tool analysis. for example,
 <ul>
