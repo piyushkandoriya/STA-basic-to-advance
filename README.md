@@ -343,3 +343,19 @@ some exceptional to design constrain. these are relax the requirement set by oth
 	</ul>
 
 ## <h1 id="header-1_7"> clocks</h1>
+Clocls ate specified using the command "create_clock". create_clock specifies the primary source, tipically on PLL or on other input port of design. It specifies the time period, information about waveform like rise and fall instant, rise and fall amplitude. Then we attached the clock to certain design like in below example, clock ois created on the "ck" port and this will met "C1". in addition to that there is a name of the clock also mentioned there.
+
+<img width="282" alt="image" src="https://user-images.githubusercontent.com/123488595/220032938-9d4d4213-d201-4c91-be7f-807fc7434469.png">
+
+we can have more then two values on the waveform like given below,
+<img width="227" alt="image" src="https://user-images.githubusercontent.com/123488595/220033130-2e83106c-3e9e-4d0d-b797-58d210d1dced.png">
+
+but in this case we have to define the full clock period here. if we not define the waveform and just mention the time period at that time automatically it will take 50% duty cycle.
+
+<img width="195" alt="image" src="https://user-images.githubusercontent.com/123488595/220033641-a23916ef-ae7f-49bc-bbcd-f37fc1184d4c.png">
+
+We can have one more option to use two clocks C1 and C2 of two different time period by using MUX by "create_clock_add switch" command. Here MUX will behaves like switch. By using this we can define two clocks at same port and use anyone according to our use.  
+
+<img width="249" alt="image" src="https://user-images.githubusercontent.com/123488595/220034337-1445f20f-9da9-4171-bc1c-13e7b75456e1.png">
+
+## <h1 id="header-1_8"> Generated Clocks</h1>
