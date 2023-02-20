@@ -409,3 +409,123 @@ On the output side also, we have to know the specific value of the load.this can
 Now we have both commands like, "set_input_transition" and "set_clock_transition". so, if CTS is not run the we have to use "set_clock_transition" command. and if CTS is  run then we just need to give "set_input_transition" command, and tool will automatically calculate other values and use it.
 	
 ## <h1 id="header-1_10">DAY-1 labs</h1>
+### OpenSTA introduction
+OpenSTA is a gate level static timing verifier. As a stand-alone executable it can be used to verify the timing of a design using standard file formats.
+<ul>
+		<li><a>Verilog netlist</a></li>
+	</ul>
+<ul>
+		<li><a>Liberty library</a></li>
+	</ul>
+<ul>
+		<li><a>SDC timing constraints</a></li>
+	</ul>
+<ul>
+		<li><a>SDF delay annotation</a></li>
+	</ul>
+<ul>
+		<li><a>SPEF parasitics</a></li>
+	</ul>
+OpenSTA is architected to be easily bolted on to other tools as a timing engine. By using a network adapter, OpenSTA can access the host netlist data structures without duplicating them.
+	
+Query based incremental update of delays, arrival and required times, it will calculate.
+	
+### Basics of OpenSTA
+It is basically timing analysis tool. it takes the design, standard cell, constraints as input and perform timing checks on the design.
+	
+It will done the analysis of,
+<ul>
+		<li><a>Report timing checks -from, -through, -to, multiple paths to endpoint </a></li>
+	</ul>
+<ul>
+		<li><a>Report delay calculation</a></li>
+	</ul>
+<ul>
+		<li><a>Check timing setup</a></li>
+	</ul>
+	
+### Inputs to OpenSTA
+we have to give Design as an input to the OpenSTA tool.The design will be in form of Netlist format. 
+
+Usually provided in Verilog using read_verilog command.
+
+#### Steps to do are:
+<ul>
+		<li><a>cd to lab1 directory using following unix command “cd lab1</a></li>
+	</ul>
+<ul>
+		<li><a>Type “ls” and you will notice one of the file named “simple.v</a></li>
+	</ul>
+<ul>
+		<li><a>simple.v is our design in Verilog format</a></li>
+	</ul>
+<ul>
+		<li><a>Open file using “leafpad simple.v”. </a></li>
+	</ul>
+you would see the following, these are standard cells or lib cells instantiations
+
+<img width="387" alt="image" src="https://user-images.githubusercontent.com/123488595/220131617-352f20af-744d-457f-ae3c-ff7679f635cd.png">
+
+Now standerd cells are provided in ".lib" format using read_liberty command.
+
+The typical cell view will have:
+<ul>
+		<li><a>Input ports definitions</a></li>
+	</ul>
+<ul>
+		<li><a>Output port definitions</a></li>
+	</ul>
+<ul>
+		<li><a>Functionality of the cells</a></li>
+	</ul>
+<ul>
+		<li><a>Input to Output relationship</a></li>
+	</ul>
+	
+Next step is Type “ls ..” and you will notice one of the file named “sky130_fd_sc_hd_tt_025C_1v80.lib”
+
+This is our library cell information in .lib (liberty format)
+
+Open file using “leafpad sky130_fd_sc_hd_tt_025C_1v80.lib”. 
+
+Now, Look for “sky130_fd_sc_hd__nand2_1” in this file, Notice this is the cell which was instantiated in our Verilog design.Find out what are the input and output pins of this cel
+
+Now timing constraints are provided in SDC format using "read_sdc" command.
+	
+### Constraints Creation - defining clocks
+As we seen in the theory, Clocks are defined using create_clock command.
+	
+Lets define a clock with period 50 on port tau2015_clk. command for this is,
+
+<img width="320" alt="image" src="https://user-images.githubusercontent.com/123488595/220133646-a3f953ab-42f6-454b-8643-fd8339b38dee.png">
+
+Now, setting the input and output delays in the primary port which are associated with clock "tau2015_clk".  command for this is,
+	
+<img width="329" alt="image" src="https://user-images.githubusercontent.com/123488595/220134036-0538b9ba-bfef-4209-99d8-c769a809d3d5.png">
+
+Now, Input transitions by environmental factors are defined. command for this is,
+
+<img width="280" alt="image" src="https://user-images.githubusercontent.com/123488595/220134415-6d030ae0-bf2c-4fe7-9dde-d885842e9803.png">
+
+Now, capacitive load on output pin is defined by this command,
+
+<img width="188" alt="image" src="https://user-images.githubusercontent.com/123488595/220134670-da74af71-626d-4b02-bb4f-9687742058f8.png">
+
+Now, Type “ls” and you will notice one of the file named “simple.sdc”. simple.sdc is our constraint file. 
+	
+Open file using “leafpad simple.sdc”.
+	
+### runScript
+
+In runscript you can define all the commands you want to run in the openSTA tool. Tool will execute each command sequentially in order. There are some commands which are executed in parallel in some cases.Runscript is in tcl format.
+	
+Now, Type “ls” and you will notice one of the file named “run.tcl”. After opening this file in leafpade by "leafpade run.tcl", we can see the leafpade like this,
+
+<img width="329" alt="image" src="https://user-images.githubusercontent.com/123488595/220135466-831f21fd-c645-49d6-84be-d611973c20ef.png">
+
+### Run OpenSTA
+Run openSTA using command “sta run.tcl -exit | tee run.log".
+	
+
+# <h2 id="header-2">Section 2- Lactures and labs </h2>	 
+## <h2 id="header-2_1">Other timing checks</h2>
