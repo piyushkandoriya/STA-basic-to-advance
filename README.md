@@ -381,3 +381,31 @@ Generated clock have multiple paths from master clock to the generated clock. Bu
 <img width="224" alt="image" src="https://user-images.githubusercontent.com/123488595/220059941-37a03266-45f1-41aa-8c93-4dc12ea2831c.png">
 
 ## <h1 id="header-1_9">Boundary Constraints</h1>
+Port delays can be defined by using these commands,
+<ul>
+		<li><a>set_input_delay</a></li>
+	</ul>
+<ul>
+		<li><a>set_output_delay</a></li>
+	</ul>
+These input and output delays are defines the delays of input and output, outside of the logic cell.
+If we have more than one delay on the same port then we have to use the command "_add_delay" aftet thrr setting the clock.
+	
+### Additional boundary constraints
+What is the transition on the input, that how fast or how slow input is rising, this can be specified by given below multiple methods:
+
+<img width="248" alt="image" src="https://user-images.githubusercontent.com/123488595/220091702-850389da-6208-4cf3-a86f-7ba1b2e459b8.png">
+
+In the first method of "set_drive" command, we have to specify the drive which is nothing but we specify the resistance value. based onn that we can calculate, how fast the rising and falling of input occures by STA tool.
+
+In the second method of "set_driving_cell" command, we specified the cell of driving port. based on the cell, the libray will be checked and according to the library, the delay can be calculated by STA tool.
+	
+In the third method of "set_input_transition", we cann directly set the specific transition time value.
+	
+On the output side also, we have to know the specific value of the load.this can be specified by multiple methods like given below,
+
+<img width="370" alt="image" src="https://user-images.githubusercontent.com/123488595/220094599-466edd80-1e5e-4331-b28c-36e2ff8bb9a3.png">
+
+Now we have both commands like, "set_input_transition" and "set_clock_transition". so, if CTS is not run the we have to use "set_clock_transition" command. and if CTS is  run then we just need to give "set_input_transition" command, and tool will automatically calculate other values and use it.
+	
+## <h1 id="header-1_10">DAY_1 labs</h1>
