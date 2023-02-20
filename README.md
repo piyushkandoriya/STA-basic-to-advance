@@ -254,9 +254,11 @@ It is the time before what the signal should be arrived.
 		<li><a>Slack</a></li>
 	</ul>
 Slack is the difference between the required time and arrival time. If slack is positive then data arrives earlier then requied time. 
+	
 <img width="278" alt="image" src="https://user-images.githubusercontent.com/123488595/219956169-c3b17b79-aa30-4839-ad15-0bdb506f59d5.png">
 
 If slack is nagative then data arrives latter then required time. so we have to fix this problem.
+	
 <img width="271" alt="image" src="https://user-images.githubusercontent.com/123488595/219956271-dbe0fa4a-9974-431f-b631-3fd5456dc56b.png">
 
 ## <h1 id="header-1_6"> SDC overview</h1>
