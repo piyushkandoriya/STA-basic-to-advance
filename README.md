@@ -529,3 +529,20 @@ Run openSTA using command “sta run.tcl -exit | tee run.log".
 
 # <h2 id="header-2">Section 2- Lactures and labs </h2>	 
 ## <h2 id="header-2_1">Other timing checks</h2>
+Till now we discussed about set up and hold check but there are other timing also ckeck in STA. like,
+<ul>
+		<li><a>Clock gating check</a></li>
+	</ul>
+This check is done on "Enable pin" with respect to "clock gating pin". results from this checks will edited in constraint file or present in the logical library.
+<ul>
+		<li><a>Async pin checks</a></li>
+	</ul>
+This ckeck is done on reset pin, clear pin and all set pin etc.here also minimum requirements is present in logical library.
+<ul>
+		<li><a>Data to Data check</a></li>
+	</ul>
+This check is done between two data pins to check data comes are required time or what? this data ckecks values specifies some constraints or global constraints.
+	
+Note: Setup and hold timing data is stored in logical library as per the require ment.
+
+## <h2 id="header-2_2">DRC (Design rule check)</h2>
