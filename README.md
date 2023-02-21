@@ -610,3 +610,92 @@ there is an example of STA analysis timing report,
 Before clock tree build, STA use constraint value for calculation and after clock tree is builded, STA use actual value of delay for calculation which is called propogation delay. Here in the bottom, we can see the final slack. if it is positive then we met the timing and if it is nagative then it is violating the timing.
 
 ## <h2 id="header-2_5">DAY-2 labs</h2>
+### Liberty File
+The ".lib" file is an ASCII representation of the timing and power 
+parameters associated with any cell in a particular semiconductor 
+technology. it comtains timing models and data to calculate like,
+<ul>
+		<li><a>I/O delay paths</a></li>
+	</ul>
+<ul>
+		<li><a>Timing check values</a></li>
+	</ul>
+<ul>
+		<li><a>Interconnect delays</a></li>
+	</ul>
+
+### understanding liberty file
+
+<img width="315" alt="image" src="https://user-images.githubusercontent.com/123488595/220416586-a3253867-4b23-4778-86a6-d1593dfbcd3d.png">
+
+#### Liberty file Cell part
+<img width="371" alt="image" src="https://user-images.githubusercontent.com/123488595/220417041-18416979-9557-4719-b8f6-f4ad8185ce70.png">
+
+#### Liberty file pin part
+<img width="364" alt="image" src="https://user-images.githubusercontent.com/123488595/220417398-2d928a28-060a-4135-8193-a09f2a5a1145.png">
+
+#### Understanding LIB parsing
+
+Command for reading the liberty file is "read_liberty".
+Some argument data for STA,
+<img width="262" alt="image" src="https://user-images.githubusercontent.com/123488595/220417823-0bd57424-ff13-4524-81f0-14451cf069e6.png">
+
+By default take, filename for both options if none are given.
+	
+Then type "cd lab2" and then type "ls". 
+Here we can see 2 lib files with the following names
+	
+<ul>
+		<li><a>simple_min.lib</a></li>
+	</ul>
+we can Open this file using 'leafpade simple_min.lib" command.
+<ul>
+		<li><a>simple_max.lib</a></li>
+	</ul>	
+we can Open this file using 'leafpade simple_max.lib" command.	
+
+### SPEF File
+Full form of SPEF file is "Standard Parasitic Exchange Format file". this SPEF file describes parasitic information of the design. we (users) can not create this file manually. it can generate automatically by STA tool.It is mainly used to pass parasitic information from one tool to another.
+	
+#### General syntax
+A Typical SPEF File has 4 main sections as listed below,
+<ul>
+		<li><a>Header</a></li>
+	</ul>
+<ul>
+		<li><a>Name map</a></li>
+	</ul>
+<ul>
+		<li><a>Top level ports</a></li>
+	</ul>
+<ul>
+		<li><a>Parasitic description</a></li>
+	</ul>
+	
+#### Understanding SPEF parsing
+Command for read SPEF parsing is "read_spef".
+
+<img width="107" alt="image" src="https://user-images.githubusercontent.com/123488595/220420522-b3ab1d1a-705b-448b-8766-fb42bfaef80a.png">
+
+#### Reporting time
+To do report timing on design, "report_checks" command is use.so, add following command in run.tcl.  so command will be like this,
+	
+<ul>
+		<li><a>report_timing –num_paths 5</a></li>
+	</ul>
+the do rerun of STA by this command,
+<ul>
+		<li><a>sta run.tcl –exit | tee run.log</a></li>
+	</ul>
+then open the file in leafpade by
+<ul>
+		<li><a>leafpad run.log</a></li>
+	</ul>
+	
+#### Understanding of timing report
+
+<img width="317" alt="image" src="https://user-images.githubusercontent.com/123488595/220422372-9e12ae84-0ab0-4b83-88b4-b9711b004de1.png">
+
+	
+# <h3 id="header-3">Section 3- Lactures and labs </h2>	 
+## <h3 id="header-3_1">Multiple clocks</h2>
