@@ -546,3 +546,40 @@ This check is done between two data pins to check data comes are required time o
 Note: Setup and hold timing data is stored in logical library as per the require ment.
 
 ## <h2 id="header-2_2">DRC (Design rule check)</h2>
+Otherthen timing rule check, STA also done design rule check.
+<ul>
+		<li><a>Slew/transition Analysis</a></li>
+	</ul>
+There are two types of slew. (1)Rise slew (2)Fell slew.
+
+Rise slew is time taken by the signal to rise from 30% of Vdd to 70% of Vdd.
+	
+Similarely, Fall slew is time taken by the signal to fall from 70% of Vdd to 30% of Vdd.
+
+<img width="164" alt="image" src="https://user-images.githubusercontent.com/123488595/220366161-47631a43-7eb6-4ea4-b6c0-527f85d7dba5.png">
+
+In STA, there is always specific constraint for that maximum and minimum value of slew value is available. so, STA can check this transition time value through out the process that this slew values are maintains or not.
+
+<ul>
+		<li><a>Load Analysis</a></li>
+	</ul>
+In this we specifies basically the what maximum and minimum capacitance is on the port and nets. similarlly fanout load onn ports and nets also specify here.
+<ul>
+		<li><a>Clock Skew Analysis</a></li>
+	</ul>
+Slew and skew are teo different things. slew is transiton time which was required by signal for rise and fall. where skew is difference in delay of the clocks at different points.
+
+There are two types of skews: 
+
+(1)+ve skew
+<img width="167" alt="image" src="https://user-images.githubusercontent.com/123488595/220370133-b68aac7b-a9fe-4877-8027-a02ffbbcfc50.png">
+
+(2)-ve skew
+<img width="163" alt="image" src="https://user-images.githubusercontent.com/123488595/220370296-6fa58ab4-9927-4f12-822f-a2ff6ad6a42c.png">
+
+<ul>
+		<li><a>Pulse width check</a></li>
+	</ul>
+<img width="182" alt="image" src="https://user-images.githubusercontent.com/123488595/220370473-d79f0c12-8c81-46f4-9061-e7f3961f33b1.png">
+
+## <h2 id="header-2_3">Latch timing</h2>
