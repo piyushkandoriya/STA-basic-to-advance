@@ -585,3 +585,28 @@ There are two types of skews:
 <img width="182" alt="image" src="https://user-images.githubusercontent.com/123488595/220370473-d79f0c12-8c81-46f4-9061-e7f3961f33b1.png">
 
 ## <h2 id="header-2_3">Latch timing</h2>
+In a flop based design, the data is captured and launched on the edges of clocks.
+   
+<img width="196" alt="image" src="https://user-images.githubusercontent.com/123488595/220406591-7d648200-b728-4297-a731-3ed62ef2b8f3.png">
+
+Here if logic delay is less or more, doesn't metters. we have to complete this process between this one time period. so, there is no flexibility in this flop based design.                                         
+	
+Latches are not edge based triggered. latches are level trigger. it means latches can capture and launch the data during whole pulse. during this period, behavior of latch is transparent. it behaves like buffer.
+	
+<img width="164" alt="image" src="https://user-images.githubusercontent.com/123488595/220411549-2e3dec12-f4e8-48df-a022-7c4cedae4d5a.png">
+
+so, latches will provide more flexibility than flops.
+	
+## <h2 id="header-2_4">STA text report</h2>
+let's understand, how STA reports setup and holds check with given example.
+	
+<img width="239" alt="image" src="https://user-images.githubusercontent.com/123488595/220412963-9786eb78-d493-49e5-b8f0-a72258c1f6d0.png">
+
+As we can see in the figure, STA convert the whole design in nodes and arcs.
+there is an example of STA analysis timing report,
+
+<img width="434" alt="image" src="https://user-images.githubusercontent.com/123488595/220413542-3732edb3-0592-42af-958b-477f4ad9c1a0.png">
+
+Before clock tree build, STA use constraint value for calculation and after clock tree is builded, STA use actual value of delay for calculation which is called propogation delay. Here in the bottom, we can see the final slack. if it is positive then we met the timing and if it is nagative then it is violating the timing.
+
+## <h2 id="header-2_5">DAY-2 labs</h2>
