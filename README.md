@@ -572,9 +572,11 @@ Slew and skew are teo different things. slew is transiton time which was require
 There are two types of skews: 
 
 (1)+ve skew
+	
 <img width="167" alt="image" src="https://user-images.githubusercontent.com/123488595/220370133-b68aac7b-a9fe-4877-8027-a02ffbbcfc50.png">
 
 (2)-ve skew
+	
 <img width="163" alt="image" src="https://user-images.githubusercontent.com/123488595/220370296-6fa58ab4-9927-4f12-822f-a2ff6ad6a42c.png">
 
 <ul>
