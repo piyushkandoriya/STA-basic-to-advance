@@ -894,9 +894,18 @@ If skew is positive then it makes the hold pasimistik and if skew is nagetive th
 jitter will increase the hold time so jitter will be adder to the hold time.
 
 ## <h3 id="header-3_5">DAY-3 Labs</h2>
-Run the lab with command "cd lab3" and then run the STA with command "sta run.tcl -noexit | tee out.txt".
-	
-### Understanding the slack computation
+
+Run the lab with command "cd lab3".
+### s27.v file
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/220737971-84d02008-6295-4a0c-9e07-0b86f1783183.png">
+
+### s27.sdc file
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/220738477-b87c8393-bfa0-4f10-a900-a089645d0b31.png">
+
+### run.tcl file
+<img width="979" alt="image" src="https://user-images.githubusercontent.com/123488595/220739184-c25cfcff-ae0d-461a-b693-d1991a1ca2d6.png">
+
+### circuit design
 <img width="229" alt="image" src="https://user-images.githubusercontent.com/123488595/220550357-c8fe2576-12cd-49cf-895a-06b454b3369a.png">
 
 By considering the above design, there are four paths are available in the design between F1 and F2.
@@ -914,7 +923,13 @@ By considering the above design, there are four paths are available in the desig
 		<li><a>4. F1:CK→U6→U5:A2→U7:A2→F2:D</a></li>
 	</ul>
 
+then run the STA with command "sta run.tcl -exit | tee out.txt".
+
 Now, Type ‘leafpad out.txt’ command and the slack reported for the path is -217.323.
+<img width="956" alt="image" src="https://user-images.githubusercontent.com/123488595/220739951-ab8461cd-4a99-43d8-b44f-fdd6deae5fb4.png">
+
+### Understanding the slack computation
+
 <img width="299" alt="image" src="https://user-images.githubusercontent.com/123488595/220551385-928cb002-28b5-425a-8064-f9fb7a23808e.png">
 
 <img width="309" alt="image" src="https://user-images.githubusercontent.com/123488595/220551514-1017b075-f6ce-40c3-adc3-50686dfd7ee6.png">
@@ -926,6 +941,13 @@ Now, Type ‘leafpad out.txt’ command and the slack reported for the path is -
 <img width="284" alt="image" src="https://user-images.githubusercontent.com/123488595/220551992-731f9d0c-7ce4-4668-9085-7922cf9eb0a9.png">
 
 <img width="305" alt="image" src="https://user-images.githubusercontent.com/123488595/220552117-6bc51549-54aa-4b8d-a835-579b1cd9d1a0.png">
+
+### Exercise 
+Q.1) change the number of paths being reported to 100 and analyze each path in detail and understand.
+
+Command for this are "report_checks -from F1/CK -endpoint_count 100" and then "sta run.tcl -exit | tee out_1.txt"
+
+After doing that we found that the slack is reduced as compaired to the first one.
 
 # <h4 id="header-4">Section 4- Lactures and labs </h4>	 
 ## <h4 id="header-4_1">Crosstalk and Noise</h4>
