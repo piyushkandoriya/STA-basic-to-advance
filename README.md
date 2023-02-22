@@ -913,4 +913,41 @@ Second timing check is removel time check. Here de-assertion should be done afte
 
 <img width="178" alt="image" src="https://user-images.githubusercontent.com/123488595/220597557-057709b2-addf-42fa-8541-efcee0beb550.png">
 
-## <h4 id="header-4_5">DAY-5 labs</h4>
+## <h4 id="header-4_5">DAY-4 labs</h4>
+### Clock gating check
+clock Gating check which we shown is "Active high clock check" and now here we see the "Active low clock getting check".
+For that commmands are,
+<ul>
+		<li><a>cd lab6</a></li>
+	</ul>
+<ul>
+		<li><a>leafpad run.tcl</a></li>
+	</ul>
+<ul>
+		<li><a>Run STA by "sta run.tcl –exit | tee run.log"</a></li>
+	</ul>
+Then analyze the slack on clock gating path which was reported there.
+	
+### Async pin checks
+In this check, there are two primary timing checks are done.
+<ul>
+		<li><a>Recovery check</a></li>
+	</ul>
+<ul>
+		<li><a>Removal check</a></li>
+	</ul>
+For this check, command are
+<ul>
+		<li><a>cd lab6</a></li>
+	</ul>
+<ul>
+		<li><a>leafpad run.tcl</a></li>
+	</ul>
+<ul>
+		<li><a>Run STA by "sta run.tcl –exit | tee run.log"</a></li>
+	</ul>
+Then analyze the slack reset path which was reported there.
+	
+# <h5 id="header-5">Section 5- Lactures and labs </h5>	 
+## <h5 id="header-5_1">Clock groups</h5>
+
