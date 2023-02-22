@@ -71,10 +71,7 @@
         <li><a href="#header-3_4">Setuo and Hold Details</a></li>
       </ul>
     	<ul>
-        <li><a href="#header-3_5">STA Text report</a></li>
-      </ul>
-    	<ul>
-        <li><a href="#header-4_6">Day 3 labs- Understanding full reg to red STA analysis, slack calculation and review setup check report</a></li>
+        <li><a href="#header-3_5">Day 3 labs- Understanding full reg to red STA analysis, slack calculation and review setup check report</a></li>
       </ul>
    </div>
 	  
@@ -699,3 +696,118 @@ then open the file in leafpade by
 	
 # <h3 id="header-3">Section 3- Lactures and labs </h2>	 
 ## <h3 id="header-3_1">Multiple clocks</h2>
+Till now we have seen the setup and hold timing analysis for single clock. now wwe are going to discuss about more than one clocls with different frequencies are available for analysis.
+	
+When different frequency of clocks are present, the setup check is calculated or the most restrictive setup is identify by first expanding the clock to a comman base period.
+	
+<img width="206" alt="image" src="https://user-images.githubusercontent.com/123488595/220536788-4362a99b-46d4-4dce-932a-0fa9cf98c717.png">
+
+<img width="205" alt="image" src="https://user-images.githubusercontent.com/123488595/220537089-8fca73e9-2c87-4272-b311-8f618970ff99.png">
+
+Now, other example we are going to use to explaine the hold check,
+	
+<img width="249" alt="image" src="https://user-images.githubusercontent.com/123488595/220537372-5d32cdaa-37ca-465e-bab9-893f81e96a6b.png">
+
+Rule (1):Data launched by setup launch edge must not be captured by previous capture edge.
+
+Rule (2):Data launched next launch edge must not be captured by setup capture edge.
+
+<img width="209" alt="image" src="https://user-images.githubusercontent.com/123488595/220537674-5328c222-7bd8-4dee-88fe-4a66a783bb3e.png">
+
+## <h3 id="header-3_2">Timing arcs and timing sense</h2>
+There are two types of timing arcs:
+<ul>
+		<li><a>Cell arcs</a></li>
+	</ul>
+cell arcs are nothing but input to the output network connections.this arcs have rise and fall time.it is basically present in logical library and they have input/output functionality and delays details.
+<ul>
+		<li><a>Net arcs</a></li>
+	</ul>
+Net arcs is the arcs which connect one cell to  another cell. same as above it is also have rise and fall time with delay details in logical library.
+
+<img width="163" alt="image" src="https://user-images.githubusercontent.com/123488595/220539455-ef9fbf07-ec67-4a36-9607-63db47eb4efd.png">
+
+#### combinational arcs
+combinational arc is arcs which don't involve any state element.
+
+<img width="174" alt="image" src="https://user-images.githubusercontent.com/123488595/220539886-825beb63-ebf4-4ed5-bcd7-d2838123a187.png">
+
+#### sequential arcs
+Sequential arcs are the arcs which are typically related to clock, setup and hold check, reset, every thing.
+
+<img width="122" alt="image" src="https://user-images.githubusercontent.com/123488595/220540279-a3794d5e-8b73-466a-b127-810d4e4fa58d.png">
+
+#### sense of the arc
+Meaning of the sense of the arc is, it is impportant to figurout when the input changes wheather output is changing in the same direction or not.
+	
+If output follows the input then it is called positive unit arc.
+	
+<img width="260" alt="image" src="https://user-images.githubusercontent.com/123488595/220540797-611b1f5a-ee2b-4bdb-8d56-58b603fc5d67.png">
+
+If output oppose the input then it is called nagetive unit arc.
+
+<img width="212" alt="image" src="https://user-images.githubusercontent.com/123488595/220541078-e59106c3-0de2-4a4f-8275-48ffa95ce7be.png">
+
+when it is not able to predict that output follows the input at that time it is called non unit arcs.
+
+<img width="262" alt="image" src="https://user-images.githubusercontent.com/123488595/220541388-bfecfa03-22ab-4e24-8247-1d2d2282f6f8.png">
+
+## <h3 id="header-3_3">Cell delays and clock network</h2>
+### Cell delays	
+When cells are present, at that time arcs are present and the cell arcs have the delays. Typically the delay is calculated is the function of input transition time, output load or capacitance.
+
+<img width="159" alt="image" src="https://user-images.githubusercontent.com/123488595/220542305-6d6ee21c-359c-4bb2-93e0-aef6ddcc383c.png">
+
+### clock network
+when clock is present in the design, clock also have network which contains the buffer, inverter and this whole network is called clock network.
+
+<img width="176" alt="image" src="https://user-images.githubusercontent.com/123488595/220542820-3f11ea10-3aa8-466e-9f25-bdfdb9a66206.png">
+
+If capture time skew is high then launch time skew then it will make little bit easier the setup check.
+	
+If design is done such a way that nagetive skew will occurs, at that time it is little bit esiar for hold check.
+
+<img width="206" alt="image" src="https://user-images.githubusercontent.com/123488595/220543748-3640810b-7f75-49f4-a9ca-27dc0f74bd68.png">
+	
+### Source latency and Network laency
+<img width="192" alt="image" src="https://user-images.githubusercontent.com/123488595/220544057-f6428ce8-6d1d-444b-bd18-6d547f8441ce.png">
+
+### Jitter
+<img width="145" alt="image" src="https://user-images.githubusercontent.com/123488595/220544207-570db3d7-5561-4d64-a756-ca4d89971793.png">
+
+## <h3 id="header-3_4">Setup and Hold Detailed</h2>
+### Setup check revisited
+Setup time says that data should be present before the clock pulse came. so setup time and other delays should be less then or equal to the total time period of the clock.
+	
+<img width="143" alt="image" src="https://user-images.githubusercontent.com/123488595/220544990-57b6cff4-7b15-43aa-b947-c8570c08de68.png">
+
+### setup ckeck with clock skew
+<img width="145" alt="image" src="https://user-images.githubusercontent.com/123488595/220545418-057ca00d-2c44-4279-b641-c717b465959e.png">
+
+when clock skew is present, there is some extra delay is also added in the time period brcause the clock will come littlebit letter due to skew.
+
+Noww if the skew is positive, then we will get additional margine to meet the setup time and if skew is nagetive then timing become more pesimistic.
+	
+### Setup check with clock skew and jitter
+<img width="166" alt="image" src="https://user-images.githubusercontent.com/123488595/220546269-149703af-679e-4be1-abf2-2c9791ed22b4.png">
+
+clock jitter will reduce the time period due to uncertantity.
+	
+### Hold check revisited
+Hold check says that next setup launch change should not be the cause of current data change. it means all delays should be greater than or equal to the hold time.
+	
+<img width="136" alt="image" src="https://user-images.githubusercontent.com/123488595/220547526-b5a0015f-c11f-43c2-a031-fede9aa98005.png">
+
+### Hold time with clock skew
+<img width="128" alt="image" src="https://user-images.githubusercontent.com/123488595/220547782-a85455c5-fb70-4b2b-81f4-5cf5afa5ac99.png">
+
+This clock skews are increase the hold time. so  skew time is added to the hold time.
+
+If skew is positive then it makes the hold pasimistik and if skew is nagetive then it makes the hold optimistik.
+	
+### Hold time with clock skew and jitter
+<img width="122" alt="image" src="https://user-images.githubusercontent.com/123488595/220548364-6878c1e2-021f-44d7-9e54-3070bd6876c7.png">
+
+jitter will increase the hold time so jitter will be adder to the hold time.
+
+## <h3 id="header-3_5">DAY-3 Labs</h2>
