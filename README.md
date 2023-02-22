@@ -1025,14 +1025,34 @@ For that commmands are,
 <ul>
 		<li><a>cd lab6</a></li>
 	</ul>
-<ul>
-		<li><a>leafpad run.tcl</a></li>
-	</ul>
-<ul>
-		<li><a>Run STA by "sta run.tcl –exit | tee run.log"</a></li>
-	</ul>
-Then analyze the slack on clock gating path which was reported there.
+Because here lab4 is found in lab6.
+### The verilog file
+Now opening the verilog file by "leafpad s27.v" command.
+
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/220745557-80124386-caf8-442a-8cb5-ae2d4c34268e.png">
+
+### circuit as per verilog file
+<img width="569" alt="image" src="https://user-images.githubusercontent.com/123488595/220747329-7e3d5114-d2bf-4423-af32-2b864c1d60c2.png">
+
+### The  s27.sdc file
+Now opening the this .sdc file by "leafpad s27.sdc" command.
 	
+<img width="968" alt="image" src="https://user-images.githubusercontent.com/123488595/220748500-af9de63e-df5a-436c-94c7-67d70a028978.png">
+
+### The run.tcl file
+Now opening the this run.tcl file by "leafpad run.tcl" command.
+
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/220748283-8e296bd0-3a5f-4e39-9ae8-556e6635c7d5.png">
+
+Now run the sta by given below command
+<ul>
+		<li><a>sta run.tcl –exit | tee run.log</a></li>
+	</ul>
+
+Then analyze the slack on clock gating path which was reported there.
+
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/220749897-5533069c-322e-43b8-be72-a4f57df9183a.png">
+
 ### Async pin checks
 In this check, there are two primary timing checks are done.
 <ul>
@@ -1041,18 +1061,32 @@ In this check, there are two primary timing checks are done.
 <ul>
 		<li><a>Removal check</a></li>
 	</ul>
-For this check, command are
+Here we open the lab7 for that.For this command is
 <ul>
-		<li><a>cd lab6</a></li>
+		<li><a>cd lab7</a></li>
 	</ul>
-<ul>
-		<li><a>leafpad run.tcl</a></li>
-	</ul>
+
+### The verilog file
+To open this verilog file command is "leafpad s27.v".
+	
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/220750674-ddd5e00e-e826-4cae-9ecc-aec3f93b0557.png">
+
+### Circuit diagram according to the verilog file
+<img width="431" alt="image" src="https://user-images.githubusercontent.com/123488595/220751425-79a457ea-13b0-4c82-8211-c15bc400feba.png">
+
+### the s27.sdc file
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/220751978-573c0799-07d0-4a7f-91f0-940ca50f4c64.png">
+
+### The run.tcl file
+<img width="958" alt="image" src="https://user-images.githubusercontent.com/123488595/220752230-91c6658d-1fa1-466c-8a56-170f892b2d24.png">
+
 <ul>
 		<li><a>Run STA by "sta run.tcl –exit | tee run.log"</a></li>
 	</ul>
 Then analyze the slack reset path which was reported there.
-	
+
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/220752544-63143419-eec3-4eeb-ad57-c97c4331efe0.png">
+
 # <h5 id="header-5">Section 5- Lactures and labs </h5>	 
 ## <h5 id="header-5_1">Clock groups</h5>
 Clock groups commmands are use to tell the STA tool that in between what clocks we need to  meet the timing and in between what clocks we don't need to meet the timing. sometimes there are no clocks where we need to meet the timing. before going into the details, first we under the synchronous and asynchronous clock.
@@ -1206,13 +1240,29 @@ Full form of CPPR is "common path pessimism removal".
 
 In above circuit, U8 and U9 are common path for launch and capture the data. so when we do the STA, it can be removed.
 	
-Now first we done STA without CRPR. for that this commands should be run,
+Now first we done STA without CRPR. for that this commands should be run,(here we open lab4 because today's lab is in lab4 directory)
 <ul>
 		<li><a>cd lab4</a></li>
 	</ul>
+
+### The verilog file for this circuit
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/220753666-ce57577b-1172-48ed-8ec2-4eeeee12455d.png">
+
+Here we can clearly see that for both the network (logoc network and clock network) code is available.
+
+### The s27.sdc file
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/220754229-76512895-ff93-4829-bef5-0e1120188a71.png">
+
+### The run.tcl file
+<img width="978" alt="image" src="https://user-images.githubusercontent.com/123488595/220754491-4a100be5-a418-49cc-a46a-26776050b3d2.png">
+
+here we can see the suggestions for CpPR.
+
+Now, run the sta with given below command
 <ul>
-		<li><a>sta run.tcl –exit | out.txt</a></li>
+		<li><a>sta run.tcl –exit | tee cppr_disable.log</a></li>
 	</ul>
+
 <ul>
 		<li><a>%report_checks -to F2/D through U5/A1</a></li>
 	</ul>
@@ -1220,7 +1270,7 @@ Here we take worst path for this analysis.
 
 So, we get this report,
 	
-<img width="194" alt="image" src="https://user-images.githubusercontent.com/123488595/220639558-7045b2d4-bdba-4c01-a05f-4f271cfd76d2.png">
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/220755776-28f07fe1-ebee-422d-b9e4-f851716baa36.png">
 
 So, here we get slack= -398.1.
 	
@@ -1228,13 +1278,11 @@ Now if we use CRPR and remove that comman part from this path then we can change
 
 <img width="239" alt="image" src="https://user-images.githubusercontent.com/123488595/220640635-9164ec90-1952-4825-997b-7ae1524802a6.png">
 
-Command for that is "set sta_crpr_enabled 1" and the command for getting the report is "%report_checks to F2/D through U5/A1". again here also we select the same path for analysis as what we selected before.
+Command for that is "sta run.tcl –exit | tee cppr_enable.log" and the command for getting the report is "%report_checks to F2/D through U5/A1". again here also we select the same path for analysis as what we selected before.
 	
 Now this is the report what we get here,
 	
-<img width="273" alt="image" src="https://user-images.githubusercontent.com/123488595/220641398-2876b46e-a993-4955-889d-d03bbbcd450a.png">
-
-As compair to the first report, in this report the reconvergence pessimism is extra added so our required time is increased and due to that the slack is reduced to "-391.43".
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/220757519-ba767d8b-ac94-4fb0-8a58-e493607529b6.png">
 
 ### ECO- Engineering change Order
 In the Engineering change Order cycle, we perform various analysis one by one for every check which we need to close but not closed till PnR stage.
@@ -1243,21 +1291,28 @@ There are specialized signoff tools that help us to analyze the issue
 and also suggest the changes we need to do in order to close the 
 issue. This suggested changes are captured in "eco file". because of these changes, we can fic the setup and Hold violations.
 	
-For that first we have to run this commands,
-	
+For that first we have to run this commands,(Here we are opening the lab5 for this)
 <ul>
 		<li><a>cd lab5</a></li>
 	</ul>
-<ul>
-		<li><a>run.tcl</a></li>
-	</ul>
+### The verilog file
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/220757877-83ea39ef-77d0-44d4-8eac-1a796bc85e75.png">
 
-<img width="155" alt="image" src="https://user-images.githubusercontent.com/123488595/220643848-ee034513-cca1-4a0c-814a-c36dbf10f97f.png">
+### The s27.sdc file
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/220758067-53b0b7dc-e527-473b-8144-d2e9bb18d240.png">
+
+### The run.tcl file
+<img width="981" alt="image" src="https://user-images.githubusercontent.com/123488595/220758717-669a9f81-5802-450e-a543-04d38fbebdd3.png">
 
 Here we can notice the commands which are used in run.tcl file.
 Now Check for description of commands in openSTA pdf document. for that open the verilog file which name is "s27_eco.v" and compair this file with "s27.v".
-	
-Observe the suggestion in this difference and implement this on the run. then we can check the chnages in the slack in the report by opening the report.
+
+<img width="959" alt="image" src="https://user-images.githubusercontent.com/123488595/220758950-71030d16-4628-4545-ae45-da08d0f06440.png">
+<img width="959" alt="image" src="https://user-images.githubusercontent.com/123488595/220759045-e17d19c5-3bc2-496b-afb1-d7a3184c7a51.png">
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/220759207-352b6281-59e0-4550-b76d-d560c9e04112.png">
+
+Observe the suggestion in this difference and implement this on the run. then we can see the chnages in the slack in the report by opening the report.
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/220760603-50f52160-f149-4a18-af69-97b3a9718e6b.png">
 
 # <h6 id="header-6">References</h6>
 <ul>
@@ -1277,4 +1332,4 @@ Observe the suggestion in this difference and implement this on the run. then we
 	</ul>
 
 # <h7 id="header-7">Acknowledgement</h7>
-I would like to express my special thanks of gratitude to Mr. kunal ghosh (co.-founder of VLSIsystem design (VSD) corp.pvt.ltd.) and mr. Vikas Sachdeva for their guidence and temendous presenting this workshop on STA. The Workshop was excellent and well designed. This workshop taught me a lot of new things about the different types of timing analysis and how to reduce the slack in the design.
+I would like to express my special thanks of gratitude to Mr. kunal ghosh (co.-founder of VLSIsystem design (VSD) corp.pvt.ltd.) and mr. Vikas Sachdeva (senior director, product strategy and business devlopment at real intent)for their guidence and temendous presenting this workshop on STA. The Workshop was excellent and well designed. This workshop taught me a lot of new things about the different types of timing analysis and how to reduce the slack in the design with OpenSTA tool.
