@@ -1155,3 +1155,21 @@ Now Check for description of commands in openSTA pdf document. for that open the
 Observe the suggestion in this difference and implement this on the run. then we can check the chnages in the slack in the report by opening the report.
 
 # <h6 id="header-6">References</h6>
+<ul>
+	<li><a>https://github.com/</a></li>
+	</ul>
+<ul>
+	<li><a>https://github.com/The-OpenROAD-Project/OpenSTA/blob/master/doc/OpenSTA.pdf</a></li>
+	</ul>
+<ul>
+	<li><a>https://people.eecs.berkeley.edu/~alanmi/publications/other/liberty07_03.pdf</a></li>
+	</ul>
+<ul>
+	<li><a>https://www.vlsisystemdesign.com/spef-format-part-1/</a></li>
+	</ul>
+<ul>
+	<li><a>https://github.com/Bharti-Navlani/VSD-IAT-Sign-off-Timing-Analysis_Basics-to-Advance/tree/main/Labs</a></li>
+	</ul>
+
+# <h7 id="header-7">Acknowledgement</h7>
+I would like to express my special thanks of gratitude to Mr. kunal ghosh (co.-founder of VLSIsystem design (VSD) corp.pvt.ltd.) and mr. Vikas Sachdeva for their guidence and temendous presenting this workshop on STA. The Workshop was excellent and well designed. This workshop taught me a lot of new things about the different types of timing analysis and how to reduce the slack in the design.
