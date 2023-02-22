@@ -663,6 +663,7 @@ technology. it comtains timing models and data to calculate like,
 
 Command for reading the liberty file is "read_liberty".
 Some argument data for STA,
+
 <img width="262" alt="image" src="https://user-images.githubusercontent.com/123488595/220417823-0bd57424-ff13-4524-81f0-14451cf069e6.png">
 
 By default take, filename for both options if none are given.
@@ -678,6 +679,49 @@ we can Open this file using 'leafpade simple_min.lib" command.
 		<li><a>simple_max.lib</a></li>
 	</ul>	
 we can Open this file using 'leafpade simple_max.lib" command.	
+
+### Exercises
+Q.1) Find all cells in simplex_max.lib
+	
+To find the number of cells in simple_max file use this command (more simple_max.lib | grep -c "End cell")
+
+<img width="974" alt="image" src="https://user-images.githubusercontent.com/123488595/220721384-2231b332-8291-449e-89bc-8c966b0357db.png">
+
+here we can see that the total number of cells are 211.
+	
+To list out all the cells in a liberty in all cell file, use this command (more simple_max.lib | grep  "End cell")
+	
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/220721664-24df91eb-4cc1-413c-8b50-73e180a8e126.png">
+
+Here we can see the list of 211 cells.
+
+Q.2) Find all the pins of cell NAND2_x1 in simple_max.lib file.
+Here we found 1 output pin "o" and 2 input pin "a" & "b" in NAND2_X1 cell.
+	
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/220722819-072a30d2-ade6-44de-86ce-179e17dce8b1.png">
+
+<img width="1015" alt="image" src="https://user-images.githubusercontent.com/123488595/220723515-fb276791-c680-4aa9-a25d-cb83a5d9e193.png">
+
+Q.3) What is the difference between  NAND2_X1 and NAND3_X1? 
+	
+NAND2_X1 is 2 input NAND gate and NAND3_X1 is 3 input NAND gate. with that capacitance is also different in these.
+	
+<img width="356" alt="image" src="https://user-images.githubusercontent.com/123488595/220724759-7d1f9f72-27af-4adb-b0cf-a819763511e4.png">
+	
+<img width="445" alt="image" src="https://user-images.githubusercontent.com/123488595/220724953-e93c7b07-a8c2-4b6f-9577-bff0abe5621b.png">
+
+Q.4) What is the difference between simple_max.lib and simple_min.lib file.
+I compared the file and found they have differnet values in cell_ fall, fall_transition, cell_rise and rise_transitionof all the cells.
+	
+Variations in the fabrication process could could either increase or decrease the delay pf cells. Timing analysis must take into account the min and max values of delay in liberty files. These libraries will be used by the STA tool for analysis.
+	
+These respresent the table which are calculated based on several equations and tells about paramenter like have different slope of rise and fall time delay, etc.
+	
+It specify PVT variation in max and min conditions.
+
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/220725906-40ee3624-bfea-437a-b48f-e0ba484de648.png">
+
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/220726526-8a5ec9b5-1f99-46e1-9de0-8138f1429a0a.png">
 
 ### SPEF File
 Full form of SPEF file is "Standard Parasitic Exchange Format file". this SPEF file describes parasitic information of the design. we (users) can not create this file manually. it can generate automatically by STA tool.It is mainly used to pass parasitic information from one tool to another.
