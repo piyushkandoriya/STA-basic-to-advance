@@ -459,13 +459,17 @@ Usually provided in Verilog using read_verilog command.
 <ul>
 		<li><a>Open file using “leafpad simple.v”. </a></li>
 	</ul>
-you would see the following, these are standard cells or lib cells instantiations
+now we can see the the verilog file in the leafpad,
 
-<img width="387" alt="image" src="https://user-images.githubusercontent.com/123488595/220131617-352f20af-744d-457f-ae3c-ff7679f635cd.png">
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/220688279-c1000ea4-41aa-40b6-854c-3c58d4f0a681.png">
 
-Now standerd cells are provided in ".lib" format using read_liberty command.
+These are standard cells or lib cells instantiations
 
-The typical cell view will have:
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/220688881-26f9694f-7e81-4264-a85e-4fed4287da80.png">
+
+Now standerd cells are provided in ".lib" format using "read_liberty" command.
+
+The typical cell view have:
 <ul>
 		<li><a>Input ports definitions</a></li>
 	</ul>
@@ -485,7 +489,15 @@ This is our library cell information in .lib (liberty format)
 
 Open file using “leafpad sky130_fd_sc_hd_tt_025C_1v80.lib”. 
 
-Now, Look for “sky130_fd_sc_hd__nand2_1” in this file, Notice this is the cell which was instantiated in our Verilog design.Find out what are the input and output pins of this cel
+Now, Looking for “sky130_fd_sc_hd__nand2_1” in this file, Notice this is the cell which was instantiated in our Verilog design.
+	
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/220697257-afff336e-d6db-43a3-95e5-e6a8d489016d.png">
+
+here Pin "B" and Pin "Y" are the input and output pins of this cell.
+
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/220697732-c8d34b41-7a8d-4e88-b4cf-eafa6cafb09a.png">
+
+<img width="956" alt="image" src="https://user-images.githubusercontent.com/123488595/220697907-444a5b9a-1632-4258-b779-8a2618a0aa64.png">
 
 Now timing constraints are provided in SDC format using "read_sdc" command.
 	
