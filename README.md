@@ -950,4 +950,79 @@ Then analyze the slack reset path which was reported there.
 	
 # <h5 id="header-5">Section 5- Lactures and labs </h5>	 
 ## <h5 id="header-5_1">Clock groups</h5>
+Clock groups commmands are use to tell the STA tool that in between what clocks we need to  meet the timing and in between what clocks we don't need to meet the timing. sometimes there are no clocks where we need to meet the timing. before going into the details, first we under the synchronous and asynchronous clock.
 
+### synchronous clocks
+synchronous clocks are clocks where events happen at a fixed phase relaton. there can be different frequency between them but basically edges are the relationship between them.
+
+<img width="187" alt="image" src="https://user-images.githubusercontent.com/123488595/220602102-1e72f071-70b2-409e-a3c3-638915c9873f.png">
+
+### Asynchronous clocks
+Asynchronous clocks are clocks where no fixed phase relationship.means the clocks edges are unrelated.
+	
+<img width="179" alt="image" src="https://user-images.githubusercontent.com/123488595/220602489-ded44088-a81a-4cce-8c77-b9ebd05f34f6.png">
+
+STA is  focused on only synchronous clocks. STA can not do any analysis of Asynchronous clocks timing paths. for Asynchronous clocks analysis, there are other tools are available like, cross domain analysis tool.
+
+### Logically exclusive clocks
+There are additional set of clocks which are known as logiclly exclusive clocks. 
+	
+<img width="151" alt="image" src="https://user-images.githubusercontent.com/123488595/220603462-7f98e49b-56c7-4608-b0a7-8b13a00f81b8.png">
+
+As shown in above figure, as per the select line of the mux, clock is selected. so,if we maintioned in the STA tools that these are logically exclusive clocks then STA will not time the path between all of them because this clocks will not come at a same time.
+
+### Physically exclusive clocks
+There is another set of clocks which is physically exclusive clocks.
+
+<img width="151" alt="image" src="https://user-images.githubusercontent.com/123488595/220604294-a8dc71cc-d569-4b72-92ac-7b0565fb88fa.png">
+
+As we can see in the above figure, these clocks can not ne together in the design at a same time. So,if we maintioned in the STA tools that these are physically exclusive clocks then STA will not time the path between all of them because this clocks will not come at a same time.
+	
+Bydefault STA will assume that all clocks are syncronous clocks.
+
+Command for to define asyncronous clocks is "set_clock_groups-asyncronous-group(clk1 clk2 clk3)-group(clk4 clk5 clk6)".
+
+This command implies that,
+<ul>
+		<li><a>clk1 is asyncronous to clk4, clk5 and clk6</a></li>
+	</ul>
+<ul>
+		<li><a>clk2 is asyncronous to clk4, clk5 and clk6</a></li>
+	</ul>
+<ul>
+		<li><a>clk3 is asyncronous to clk4, clk5 and clk6</a></li>
+	</ul>
+<ul>
+		<li><a>No relation can be assumed ammongs clk1,clk2 and clk3</a></li>
+	</ul>
+<ul>
+		<li><a>No relation can be assumed ammongs clk4,clk5 and clk6</a></li>
+	</ul>
+If only one group is specified like, "set_clock_groups-asyncronous-group(clk1 clk2 clk3)".
+
+So, STA will assume that there is no relation between clk1, clk2 and clk3. and these three clocks will asyncronize with all the other clocks of the design.
+
+## <h5 id="header-5_2">Clock properties</h5>
+These are the set of commands which defines the properties of the clocks.
+<ul>
+		<li><a>set_clock_transition</a></li>
+	</ul>
+By using this command, we can set the transition time of clock like what is the rise and fall time.
+
+<ul>
+		<li><a>set_clock_uncertainty</a></li>
+	</ul>
+By this command, we can specify the uncertainty of clock by clock skew and clock jitter.
+<ul>
+		<li><a>set_clock_latency</a></li>
+	</ul>
+	
+<ul>
+		<li><a>set_clock_sense-stop_propogation</a></li>
+	</ul>
+<ul>
+		<li><a>set_clock_sense-positive</a></li>
+	</ul>
+<ul>
+		<li><a>set_ideal_network</a></li>
+	</ul>
