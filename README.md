@@ -744,7 +744,15 @@ A Typical SPEF File has 4 main sections as listed below,
 #### Understanding SPEF parsing
 Command for read SPEF parsing is "read_spef".
 
-<img width="107" alt="image" src="https://user-images.githubusercontent.com/123488595/220420522-b3ab1d1a-705b-448b-8766-fb42bfaef80a.png">
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/220729310-3fb2055d-ab53-42be-89d0-96552b852aa1.png">
+
+Verilog file for the design,
+	
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/220729998-a1bfde8c-095a-461c-b6bc-248dad91db69.png">
+
+Circuit diagram according to the verilog file,
+	
+<img width="273" alt="image" src="https://user-images.githubusercontent.com/123488595/220731522-95d17c43-af69-4912-87df-803a82e165b4.png">
 
 #### Reporting time
 To do report timing on design, "report_checks" command is use.so, add following command in run.tcl.  so command will be like this,
@@ -760,12 +768,15 @@ then open the file in leafpade by
 <ul>
 		<li><a>leafpad run.log</a></li>
 	</ul>
+
+<img width="959" alt="image" src="https://user-images.githubusercontent.com/123488595/220732731-e6edd3ff-23ee-4c28-b906-88aece0cf5d3.png">
+
 	
 #### Understanding of timing report
 
 <img width="317" alt="image" src="https://user-images.githubusercontent.com/123488595/220422372-9e12ae84-0ab0-4b83-88b4-b9711b004de1.png">
 
-	
+
 # <h3 id="header-3">Section 3- Lactures and labs </h2>	 
 ## <h3 id="header-3_1">Multiple clocks</h2>
 Till now we have seen the setup and hold timing analysis for single clock. now wwe are going to discuss about more than one clocls with different frequencies are available for analysis.
