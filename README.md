@@ -846,3 +846,71 @@ Now, Type ‘leafpad out.txt’ command and the slack reported for the path is -
 
 # <h4 id="header-4">Section 4- Lactures and labs </h4>	 
 ## <h4 id="header-4_1">Crosstalk and Noise</h4>
+### Crosstalk
+when there are signals or wires which are present in close proximity of eachother, the coupling capacitor is generated between them. So, because of this effect, if signal in one path (aggressor) is changes the other signal of different path (victim) will also change. because of these changes, if both the signal change in same direction then origional victim signal change faster and delay of the signal become lesser. and if both the signal change in opposite direction then origional victim signal change slower and delay of the signal become higher.
+	
+STA will taken in accout these delays for calculation. 
+	
+<img width="214" alt="image" src="https://user-images.githubusercontent.com/123488595/220586029-3ff9c3c6-a745-406e-8116-5997ddabbc9f.png">
+
+### Noise
+In some cases, the victim signal is not changing due to aggressor signal. but here also coupling capacitor is available. so, due to coupling capacitor, in victim signal, one glitch will create and this glitch is known as noise. 
+
+<img width="276" alt="image" src="https://user-images.githubusercontent.com/123488595/220586630-d1c30f1e-a530-4cec-a044-c680576c98d4.png">
+
+STA observe this glithces and make sure that this glitches are less than the thresold voltages.
+	
+## <h4 id="header-4_2">Operting modes and other variation</h4>
+Chip is made by physical process and this process has global  process variation. this variations are in term of one wafer to another wafer or within the wafer two dies can have variations.
+	
+<img width="163" alt="image" src="https://user-images.githubusercontent.com/123488595/220587954-60e522ba-eb6b-44da-92b9-2b5415b0bd3c.png">
+
+The cause of these variations is different manufacturing delays and different transition times. so, STA has to take this into account.
+	
+We can have variations within die it self. So, STA has to take this also into account.
+	
+<img width="167" alt="image" src="https://user-images.githubusercontent.com/123488595/220588866-19f4c37c-d032-4e95-9faf-4f5332396eb8.png">
+
+## <h4 id="header-4_3">Clock getting checks</h4>
+Clock getting checks is done when a signal can control the path of the clock at a cell. for example if we have an AND gate and in this one of the input signal is clock and other input one is enable, then clock getting check is done there.
+
+In oreder to clock getting check to heppenes, the signal must be used as clock downstream. the meaning of this is 
+<ul>
+		<li><a>It should be feed a flop or latch clock pin</a></li>
+	</ul>
+<ul>
+		<li><a>or it should feed to output port.</a></li>
+	</ul>
+<ul>
+		<li><a>or it should feed to generated clocks</a></li>
+	</ul>	
+The intension of the check is to insure that the transiton on geting pin does not create any unnecessory active edge of the clock in the fanout. Let's understand that using specific cell for which clock geting check is done.
+	
+We will start with active high clock geting cell which is done on AND gate or NAND gate.
+	
+<img width="155" alt="image" src="https://user-images.githubusercontent.com/123488595/220592069-84888187-d082-47a5-9a17-9f3da6c32ef6.png">
+
+clock geting check is checked during the setup check that from the rise of the clock pulse and before certai serup time, the enable should be stable. and similarly after the falling eged of clock pulse and after some hold period, enable should be stable. Id enable changes during this time period, our setup and hold time will be violated.
+	
+Instead of AND or NAND gate, if there will be a OR gate then between the low pulse and before the low pulse came up to setup time and after the low pulse came up to hold time, enable should be stable. 
+	
+<img width="167" alt="image" src="https://user-images.githubusercontent.com/123488595/220594044-d5202dac-842f-412a-bf09-52dc9f758276.png">
+
+Other then AND, NAND and OR gate, timing tool will say it can't figure out the clock getinh check. and users have to specify that what type of check they want.Command for this check is "set_clock_geting_check".
+	
+## <h4 id="header-4_4">checks on Async pin</h4>
+Async pins typically in the design are "RESET" or "CLEAR" pins. below we are using clear pin as an example but it can be RESEt pin also.
+
+When assertion is happenes, there is no relation with the clock but the de-assertion causes flop to become dependent on clock. So, when we move to synchronisum with clock from asynchronisum,  Timing checks are needed to avoid unknown states.
+
+First step of timing check is recovery time. Recovery time is a period which is between assertion and de-assertion.
+
+<img width="203" alt="image" src="https://user-images.githubusercontent.com/123488595/220596694-c9f2d563-6360-4ef5-95e0-043d6177e630.png">
+
+De-assertion should be happense before the some clock period.assertion can happense anytime.
+
+Second timing check is removel time check. Here de-assertion should be done after some time of the rise clock pulse.
+
+<img width="178" alt="image" src="https://user-images.githubusercontent.com/123488595/220597557-057709b2-addf-42fa-8541-efcee0beb550.png">
+
+## <h4 id="header-4_5">DAY-5 labs</h4>
