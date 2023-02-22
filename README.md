@@ -1086,7 +1086,7 @@ The last setup command which is use to define the multiple modes in STC. This co
 	
 For example, let 2:1 mux have TestCLK and FunctionCLK in the input and select line is "SEL". so if we want to do the analysis of functionCLK. so  we have to give commmand like "set_case_analysis 1 {SEL}".
 	
-## <h5 id="header-5_5">DAY 5- Labs/h5>
+## <h5 id="header-5_5">DAY 5- Labs</h5>
 As we done the analysis of slack calculation in the DAY-3 lab, same we have to done here and we get -217.32 slack here in the report which we can see below.
 ### report
 <img width="232" alt="image" src="https://user-images.githubusercontent.com/123488595/220636659-68f88983-e5d9-4e36-bbf1-208a0742c15f.png">
