@@ -1016,13 +1016,142 @@ By this command, we can specify the uncertainty of clock by clock skew and clock
 <ul>
 		<li><a>set_clock_latency</a></li>
 	</ul>
-	
+By this command we can set the source and network latency of the path.
 <ul>
 		<li><a>set_clock_sense-stop_propogation</a></li>
 	</ul>
+By this command, we can specify the where clock si stoping at perticular point.
 <ul>
 		<li><a>set_clock_sense-positive</a></li>
 	</ul>
+Here we can define the positive unit or nagative unit of the clocks.
 <ul>
 		<li><a>set_ideal_network</a></li>
 	</ul>
+
+## <h5 id="header-5_3">Timing exceptions</h5>
+There is special set of commands in STA konwn as "timing exception" which can modify the default behavior.
+	
+Before we goes into the timing exception, we have to understand the path specification of the perticular design.
+
+<img width="129" alt="image" src="https://user-images.githubusercontent.com/123488595/220626465-ae0a6e56-0ade-4c66-9c98-9d74497cfca2.png">
+
+there are multiple paths exist in above network. and if we want to change the default behavior of this timing analysis on the path, we have to specify that on what path we have to change the behavior. To specify this path, any of the timing excaption commands using three option which are gievn below,
+<ul>
+		<li><a>from</a></li>
+	</ul>
+It is use for start points(I/O ports, clock pins)
+<ul>
+		<li><a>to</a></li>
+	</ul>
+It is typically used for end points.
+<ul>
+		<li><a>through</a></li>
+	</ul>
+it is used for nets and nodes(combinational nodes).
+	
+Now, lets we take one path as given below in the circuit for change the behavior.
+
+<img width="130" alt="image" src="https://user-images.githubusercontent.com/123488595/220628190-e633b2a0-d3cf-45bd-98c8-13b797c994f2.png">
+
+To specify this we have to write "-from F1/ck-to F5/D-through {U1/a}-through {U1/z}". Here through options are ordered options and we have to use this accordingly.
+
+Now, let's see the varies exception commands use for this path specification
+to change the default behavior.
+
+#### set_false_path
+"-from F1/ck/D through {U1/a} through {U1/z} to F5", meaning of giving this command is don't time this path.
+
+#### set_multicycle_path
+"set_multicycle_path-setup 2-from FF1 to FF2", this is the command for set the multicycle path
+<img width="191" alt="image" src="https://user-images.githubusercontent.com/123488595/220631910-1d87ad15-bf6e-4c89-8e18-466d86c5db84.png">
+	
+Here we specify to STA that meet the timing in 2 cycle instead of 1 cycle through this path.
+
+Similarly, hold time is also modified by this command, "set_multicycle_path-hold 1-from FF1 to FF2".
+	
+### Other exception
+<ul>
+		<li><a>set_max_delay</a></li>
+	</ul>
+<ul>
+		<li><a>set_min_delay</a></li>
+	</ul>
+<ul>
+		<li><a>set_disable_timing</a></li>
+	</ul>
+
+## <h5 id="header-5_4">multiple modes</h5>
+The last setup command which is use to define the multiple modes in STC. This command is "set_case_analysis". this command is use to specify a certain portion of the design and specify a constant value that may or may not be constant value in the netlist but we can over write this by using this command.
+	
+For example, let 2:1 mux have TestCLK and FunctionCLK in the input and select line is "SEL". so if we want to do the analysis of functionCLK. so  we have to give commmand like "set_case_analysis 1 {SEL}".
+	
+## <h5 id="header-5_5">DAY 5- Labs/h5>
+As we done the analysis of slack calculation in the DAY-3 lab, same we have to done here and we get -217.32 slack here in the report which we can see below.
+### report
+<img width="232" alt="image" src="https://user-images.githubusercontent.com/123488595/220636659-68f88983-e5d9-4e36-bbf1-208a0742c15f.png">
+
+### Circuit design
+<img width="226" alt="image" src="https://user-images.githubusercontent.com/123488595/220636769-5f429a70-6817-4b08-bad5-f57e68143213.png">
+
+### CPPR
+Full form of CPPR is "common path pessimism removal".
+	
+<img width="370" alt="image" src="https://user-images.githubusercontent.com/123488595/220637833-8ada7645-3e9d-466a-ba4a-ddcc2f62a2c1.png">
+
+In above circuit, U8 and U9 are common path for launch and capture the data. so when we do the STA, it can be removed.
+	
+Now first we done STA without CRPR. for that this commands should be run,
+<ul>
+		<li><a>cd lab4</a></li>
+	</ul>
+<ul>
+		<li><a>sta run.tcl –exit | out.txt</a></li>
+	</ul>
+<ul>
+		<li><a>%report_checks -to F2/D through U5/A1</a></li>
+	</ul>
+Here we take worst path for this analysis.
+
+So, we get this report,
+	
+<img width="194" alt="image" src="https://user-images.githubusercontent.com/123488595/220639558-7045b2d4-bdba-4c01-a05f-4f271cfd76d2.png">
+
+So, here we get slack= -398.1.
+	
+Now if we use CRPR and remove that comman part from this path then we can change the behavior and same time we can reduce the slack. Now as given below in the circuit, "c2" is the node which required CRPR.
+
+<img width="239" alt="image" src="https://user-images.githubusercontent.com/123488595/220640635-9164ec90-1952-4825-997b-7ae1524802a6.png">
+
+Command for that is "set sta_crpr_enabled 1" and the command for getting the report is "%report_checks to F2/D through U5/A1". again here also we select the same path for analysis as what we selected before.
+	
+Now this is the report what we get here,
+	
+<img width="273" alt="image" src="https://user-images.githubusercontent.com/123488595/220641398-2876b46e-a993-4955-889d-d03bbbcd450a.png">
+
+As compair to the first report, in this report the reconvergence pessimism is extra added so our required time is increased and due to that the slack is reduced to "-391.43".
+
+### ECO- Engineering change Order
+In the Engineering change Order cycle, we perform various analysis one by one for every check which we need to close but not closed till PnR stage.
+
+There are specialized signoff tools that help us to analyze the issue 
+and also suggest the changes we need to do in order to close the 
+issue. This suggested changes are captured in "eco file". because of these changes, we can fic the setup and Hold violations.
+	
+For that first we have to run this commands,
+	
+<ul>
+		<li><a>cd lab5</a></li>
+	</ul>
+<ul>
+		<li><a>run.tcl</a></li>
+	</ul>
+
+<img width="155" alt="image" src="https://user-images.githubusercontent.com/123488595/220643848-ee034513-cca1-4a0c-814a-c36dbf10f97f.png">
+
+Here we can notice the commands which are used in run.tcl file.
+Now Check for description of commands in openSTA pdf document. for that open the verilog file which name is "s27_eco.v" and compair this file with "s27.v".
+	
+Observe the suggestion in this difference and implement this on the run. then we can check the chnages in the slack in the report by opening the report.
+
+# <h6 id="header-6">References</h6>
