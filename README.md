@@ -500,6 +500,7 @@ here Pin "B" and Pin "Y" are the input and output pins of this cell.
 <img width="956" alt="image" src="https://user-images.githubusercontent.com/123488595/220697907-444a5b9a-1632-4258-b779-8a2618a0aa64.png">
 
 Now timing constraints are provided in SDC format using "read_sdc" command.
+
 	
 ### Constraints Creation - defining clocks
 As we seen in the theory, Clocks are defined using create_clock command.
@@ -523,6 +524,10 @@ Now, capacitive load on output pin is defined by this command,
 Now, Type “ls” and you will notice one of the file named “simple.sdc”. simple.sdc is our constraint file. 
 	
 Open file using “leafpad simple.sdc”.
+
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/220702969-8e50c8c4-3d42-4d4e-89c8-7fdd453e17da.png">
+<img width="959" alt="image" src="https://user-images.githubusercontent.com/123488595/220703944-9c46a1c5-e92d-4d01-b210-4ab6bcef5457.png">
+
 	
 ### runScript
 
@@ -530,11 +535,22 @@ In runscript you can define all the commands you want to run in the openSTA tool
 	
 Now, Type “ls” and you will notice one of the file named “run.tcl”. After opening this file in leafpade by "leafpade run.tcl", we can see the leafpade like this,
 
-<img width="329" alt="image" src="https://user-images.githubusercontent.com/123488595/220135466-831f21fd-c645-49d6-84be-d611973c20ef.png">
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/220705985-2f1aa9ac-e597-4d25-be9a-cd66f689f9ac.png">
+
 
 ### Run OpenSTA
 Run openSTA using command “sta run.tcl -exit | tee run.log".
+
+Here STA, devides this design into two parts.
 	
+First part is "F1" to "OUT"(noticed form start point and endpoint):
+<img width="959" alt="image" src="https://user-images.githubusercontent.com/123488595/220708503-8d5f9972-7bbc-4df2-a89c-95e89fccafe9.png">
+Here "Path type: MAX" means thr setup analysis.
+
+Second part is "inp1" to "F1".(noticed form start point and endpoint)
+
+<img width="960" alt="image" src="https://user-images.githubusercontent.com/123488595/220709615-cca738a2-9690-4781-a51b-7945e25afd81.png">
+
 
 # <h2 id="header-2">Section 2- Lactures and labs </h2>	 
 ## <h2 id="header-2_1">Other timing checks</h2>
